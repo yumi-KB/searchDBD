@@ -1,9 +1,14 @@
 import UIKit
-//import Alamofire
+import Alamofire
 
 class ViewController: UIViewController {
     
     // MARK: Properties
+    var list: [String] = []
+    var headerText: String = ""
+    var steamID: String = ""
+    
+    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tapSegmentedControl: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
@@ -34,55 +39,53 @@ class ViewController: UIViewController {
 extension ViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
-
+        
         if let searchWord = searchBar.text {
             print(searchWord)
-         // searchPlayerInfo(key: searchWord)
-        // segue
+            
+            /* APIリクエスト */
+            let req = RequestSteamAPI(input: searchWord)
+            /* バリデーション */
+            do {
+                //try req.validate()
+                try headerText = req.validate()
+                print("headerText exists?: \(headerText)")
+                tableView.reloadData()
+                return
+            } catch {
+                // エラーが来たら
+                headerText = "正しい値を入力してください"
+                print("正しい値を入力してください")
+                tableView.reloadData()
+                return
+            }
+        
         }
     }
 }
 
 
+
 // MARK: UITableViewDataSource
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-     // お菓子のリストの総数
-        return 0// okashiList.count
+        return 3 //test
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
      // 表示のための、cellオブジェクト(一行)を取得する
-        let cell = tableView.dequeueReusableCell(withIdentifier: "StatsTableViewCell", for: indexPath)
-     
-     // お菓子のタイトル設定
-        //statsName.text = "0"
-        //statsValue.text = "1"
-     // cell.textLabel?.text = okashiList[indexPath.row].name
-     
-     // お菓子画像を取得
-//        if let userImage = try? Data(contentsOf: okashiList[indexPath.row].image) {
-//            cell.imageView?.image = UIImage(data: userImage)
-//        }
- 
-        return cell
+        let headerCell = tableView.dequeueReusableCell(withIdentifier: "HeaderTableViewCell", for: indexPath) as! HeaderTableViewCell
+        headerCell.textLabel?.text = headerText
+
+        return headerCell
     }
 }
  
      
- // MARK: UITableViewDelegate, SFSafariViewControllerDelegate
+ // MARK: UITableViewDelegate
  extension ViewController: UITableViewDelegate {
     // タップされたら、アラートを表示する
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
          tableView.deselectRow(at: indexPath, animated: true)
-         
-         //let safariViewController = SFSafariViewController(url: okashiList[indexPath.row].link)
-         //safariViewController.delegate = self
-         
-         //present(StatsDetailViewController, animated: true, completion: nil)
      }
-     
-//     func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
-//         dismiss(animated: true, completion: nil)
-//     }
  }
