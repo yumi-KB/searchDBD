@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlayerStatsCell" id="YtF-Zv-IzA" customClass="PlayerStatsTableViewCell" customModule="DBD" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YtF-Zv-IzA" id="MtT-3n-HUf">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="166" translatesAutoresizingMaskIntoConstraints="NO" id="uW4-A6-Q8X">
+                        <rect key="frame" x="15" y="0.0" width="384" height="44"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Key" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mfd-sb-1CF">
+                                <rect key="frame" x="0.0" y="0.0" width="28.5" height="44"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOE-N8-eFT">
+                                <rect key="frame" x="309" y="0.0" width="75" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="NWT-C3-wDT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="JOE-N8-eFT" firstAttribute="leading" secondItem="Mfd-sb-1CF" secondAttribute="trailing" constant="15" id="07v-Wi-eD7"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="uW4-A6-Q8X" secondAttribute="trailing" constant="15" id="Qcf-qW-e1a"/>
+                    <constraint firstItem="uW4-A6-Q8X" firstAttribute="leading" secondItem="MtT-3n-HUf" secondAttribute="leading" constant="15" id="aHF-nz-YgM"/>
+                    <constraint firstItem="uW4-A6-Q8X" firstAttribute="top" secondItem="MtT-3n-HUf" secondAttribute="top" id="ecq-Oq-7ZE"/>
+                    <constraint firstAttribute="bottom" secondItem="uW4-A6-Q8X" secondAttribute="bottom" id="xee-1y-GAE"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="playerStatsKeyLabel" destination="Mfd-sb-1CF" id="P6m-hq-sQ0"/>
+                <outlet property="playerStatsValueLabel" destination="JOE-N8-eFT" id="lxz-hN-S8Y"/>
+            </connections>
+            <point key="canvasLocation" x="-196" y="-255"/>
+        </tableViewCell>
+    </objects>
+</document>
