@@ -1,6 +1,7 @@
 import UIKit
 import Alamofire
 import Nuke
+import MBProgressHUD
 
 class ViewController: UIViewController {
     
@@ -11,17 +12,25 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBAction func selectButton(_ sender: UISegmentedControl) {
-        //        switch sender.selectedSegmentIndex {
-        //        case 0:
-        //            break;
-        //        case 1:
-        //            break;
-        //        case 2:
-        //            break;
-        //        default:
-        //            break
-        //        }
+        switch sender.selectedSegmentIndex {
+        case 0:
+            statsNameTableList = survStatsList
+            statsValueTableList = allStatsList
+            print("0")
+        case 1:
+           // playerStatsNameTable = survStatsList
+           // playerStatsValueTable = killerStatsList
+            print("1")
+        case 2:
+           // playerStatsNameTable = ["A","B"]
+           // playerStatsValueTable = allStatsList
+            print("2")
+        default:
+            break
+        }
+        tableView.reloadData()
     }
+
     @IBOutlet weak var tableView: UITableView!
     
     // steamAPIアクセス用のkey
@@ -34,6 +43,14 @@ class ViewController: UIViewController {
     
     let avatarFull = "https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/e3/e3dcfb9bf6eaf721587f69aa1bdb825807e11d63_full.jpg"
     
+    let allStatsList = [1,2.2,3]
+    let survStatsList = ["a","b","c"]
+    let killerStatsList = [0,9.0,8]
+    
+    var statsNameTableList: [String] = []
+    var statsValueTableList: [Double] = []
+    
+    var hud = MBProgressHUD()
     
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -41,8 +58,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Nuke.loadImage(with: URL(string: avatarFull)!, into: playerImage)
-        playerName.text = "MyName"
+        //Nuke.loadImage(with: URL(string: avatarFull)!, into: playerImage)
+        //playerName.text = "MyName"
         
         searchBar.delegate = self
         tableView.dataSource = self
@@ -64,7 +81,7 @@ extension ViewController: UISearchBarDelegate {
         if var searchWord = searchBar.text {
             print("searchWord is:\(searchWord)")
             /* debug */
-            searchWord = "76561198193960305"
+            searchWord = "oxo-kyumi"
             
             /* バリデーション */
             do {
@@ -77,6 +94,11 @@ extension ViewController: UISearchBarDelegate {
             }
             
             /* 注意！コールバック地獄！*/
+            
+            // HUDの表示
+            hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+            hud.label.text = "Searching..."
+            
             // MARK: ResolveVanityURL
             AF.request("https://api.steampowered.com/ISteamUser/ResolveVanityURL/v1/",
                        method: .get,
@@ -98,7 +120,8 @@ extension ViewController: UISearchBarDelegate {
                         let result: ResultVanity = try decoder.decode(ResultVanity.self, from: data)
                         
                         self.steamID = result.response.steamid
-                        
+                        /* set */
+    
                         debugPrint(result)
                         debugPrint(self.steamID)
                         debugPrint("--ResultVanityURL--")
@@ -123,7 +146,13 @@ extension ViewController: UISearchBarDelegate {
                                 do {
                                     let decoder = JSONDecoder()
                                     let result = try decoder.decode(ResultStats.self, from: data)
+                                    
+                                    /* set */
+                    
                                     debugPrint(result)
+                                    print(result.playerstats.steamID)
+                                    print(result.playerstats.stats[0].name)
+                                    print(result.playerstats.stats[0].value)
                                     print("--statsForGame 1--")
                                     
                                     // MARK: 1 - getPlayerSummaries(Success)
@@ -145,10 +174,17 @@ extension ViewController: UISearchBarDelegate {
                                             do {
                                                 let decoder = JSONDecoder()
                                                 let result: ResultPlayer = try decoder.decode(ResultPlayer.self, from: data)
-                                                //  self.userName = result.response.players.personaname
-                                                // userImage = result.response.players.avatarfull
-                                                //result.response.players.steamid
+                                                /* set */
+                                                self.playerName.text = result.response.players[0].personaname
+                                                
+                                                let imageURL = result.response.players[0].avatarfull
+                                                Nuke.loadImage(with: imageURL, into: self.playerImage)
+                                                
+                                              
+                                                
                                                 debugPrint(result)
+                                                print(result.response.players[0].personaname)
+                                                print(result.response.players[0].avatarfull)
                                                 print("--playerSummaries 1--")
                                                 
                                             }catch {
@@ -203,6 +239,9 @@ extension ViewController: UISearchBarDelegate {
                                     let decoder = JSONDecoder()
                                     let result = try decoder.decode(ResultStats.self, from: data)
                                     debugPrint(result)
+                                    print(result.playerstats.steamID)
+                                    print(result.playerstats.stats[0].name)
+                                    print(result.playerstats.stats[0].value)
                                     print("--gameStats 2--")
                                     
                                     
@@ -229,6 +268,8 @@ extension ViewController: UISearchBarDelegate {
                                                 //result.response.players.avatarfull
                                                 //result.response.players.steamid
                                                 debugPrint(result)
+                                                print(result.response.players[0].personaname)
+                                                print(result.response.players[0].avatarfull)
                                                 print("-- playerStats 2--")
                                                 
                                             }catch {
@@ -258,6 +299,9 @@ extension ViewController: UISearchBarDelegate {
                     print("ERROR: \(error)")
                     return
                 }
+                
+                // HUDの非表示
+                MBProgressHUD.hide(for: self.view, animated: true)
             }
             /* close - resultVanity */
             
@@ -274,7 +318,7 @@ extension ViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return statsNameTableList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -282,7 +326,9 @@ extension ViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        playerStatsCell.set(key: "データ", value: "1011.11")
+        
+        
+        playerStatsCell.set(key: statsNameTableList[indexPath.row], value: String(statsValueTableList[indexPath.row]))
         
         return playerStatsCell
     }

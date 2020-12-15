@@ -25,6 +25,7 @@
 		4BE42D4A2587BFB700C9EA6D /* PlayerStatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE42D492587BFB700C9EA6D /* PlayerStatsTableViewCell.swift */; };
 		4BE42D4F2587BFC700C9EA6D /* PlayerStatsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BE42D4E2587BFC700C9EA6D /* PlayerStatsTableViewCell.xib */; };
 		4BE42D552587E38600C9EA6D /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 4BE42D542587E38600C9EA6D /* Nuke */; };
+		4BE42D612588999500C9EA6D /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 4BE42D602588999500C9EA6D /* MBProgressHUD */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BE42D612588999500C9EA6D /* MBProgressHUD in Frameworks */,
 				4BE08F812581C764007A7033 /* Alamofire in Frameworks */,
 				4BE42D552587E38600C9EA6D /* Nuke in Frameworks */,
 			);
@@ -192,6 +194,7 @@
 			packageProductDependencies = (
 				4BE08F802581C764007A7033 /* Alamofire */,
 				4BE42D542587E38600C9EA6D /* Nuke */,
+				4BE42D602588999500C9EA6D /* MBProgressHUD */,
 			);
 			productName = DBD;
 			productReference = 4BE08EFA257F4F0C007A7033 /* DBD.app */;
@@ -267,6 +270,7 @@
 			packageReferences = (
 				4BE08F7F2581C764007A7033 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				4BE42D532587E38600C9EA6D /* XCRemoteSwiftPackageReference "Nuke" */,
+				4BE42D5F2588999500C9EA6D /* XCRemoteSwiftPackageReference "MBProgressHUD" */,
 			);
 			productRefGroup = 4BE08EFB257F4F0C007A7033 /* Products */;
 			projectDirPath = "";
@@ -697,6 +701,14 @@
 				minimumVersion = 9.2.0;
 			};
 		};
+		4BE42D5F2588999500C9EA6D /* XCRemoteSwiftPackageReference "MBProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jdg/MBProgressHUD";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -709,6 +721,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4BE42D532587E38600C9EA6D /* XCRemoteSwiftPackageReference "Nuke" */;
 			productName = Nuke;
+		};
+		4BE42D602588999500C9EA6D /* MBProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4BE42D5F2588999500C9EA6D /* XCRemoteSwiftPackageReference "MBProgressHUD" */;
+			productName = MBProgressHUD;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

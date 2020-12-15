@@ -17,7 +17,7 @@ struct ResultVanity: Codable {
 struct Player: Codable {
     let steamid: String
     let personaname: String
-    let avatarfull: URL?
+    let avatarfull: URL
 }
 struct ResponsePlayers: Codable {
     let players: [Player]
