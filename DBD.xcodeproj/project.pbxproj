@@ -22,6 +22,7 @@
 		4BE42D4F2587BFC700C9EA6D /* PlayerStatsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4BE42D4E2587BFC700C9EA6D /* PlayerStatsTableViewCell.xib */; };
 		4BE42D552587E38600C9EA6D /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 4BE42D542587E38600C9EA6D /* Nuke */; };
 		4BE42D612588999500C9EA6D /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 4BE42D602588999500C9EA6D /* MBProgressHUD */; };
+		4BE42D8B258B136700C9EA6D /* DetailStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE42D8A258B136700C9EA6D /* DetailStatsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		4BE08F852581D4D3007A7033 /* RequestSteamAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSteamAPI.swift; sourceTree = "<group>"; };
 		4BE42D492587BFB700C9EA6D /* PlayerStatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStatsTableViewCell.swift; sourceTree = "<group>"; };
 		4BE42D4E2587BFC700C9EA6D /* PlayerStatsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerStatsTableViewCell.xib; sourceTree = "<group>"; };
+		4BE42D8A258B136700C9EA6D /* DetailStatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStatsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 		4BE08EF1257F4F0C007A7033 = {
 			isa = PBXGroup;
 			children = (
+				4BE42D8A258B136700C9EA6D /* DetailStatsViewController.swift */,
 				4BE08EFC257F4F0C007A7033 /* DBD */,
 				4BE08F13257F4F0D007A7033 /* DBDTests */,
 				4BE08F1E257F4F0D007A7033 /* DBDUITests */,
@@ -330,6 +333,7 @@
 				4BE08EFE257F4F0C007A7033 /* AppDelegate.swift in Sources */,
 				4BE08F862581D4D3007A7033 /* RequestSteamAPI.swift in Sources */,
 				4BE08F00257F4F0C007A7033 /* SceneDelegate.swift in Sources */,
+				4BE42D8B258B136700C9EA6D /* DetailStatsViewController.swift in Sources */,
 				4BE08F6725806A92007A7033 /* Methods.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

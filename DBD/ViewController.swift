@@ -57,15 +57,17 @@ class ViewController: UIViewController {
 //    let killerStatsList = [0,9.0,8]
 //
     /* 表示用の配列*/
-    var tableList: [(name: String, value: Float)] = []
+    var tableList: [(name: String, value: String)] = []
     
     /* データ格納用の配列 */
-    var allStatsList: [(name: String, value: Float)] = []
-    var survStatsList: [(name: String, value: Float)] = []
-    var killerStatsList: [(name: String, value: Float)] = []
+    var allStatsList: [(name: String, value: String)] = []
+    var survStatsList: [(name: String, value: String)] = []
+    var killerStatsList: [(name: String, value: String)] = []
     
     //var statsNameTableList: [String] = []
     //var statsValueTableList: [Double] = []
+    var detailName = ""
+    var detailValue = ""
     
     /* indicator */
     var hud = MBProgressHUD()
@@ -174,7 +176,8 @@ extension ViewController: UISearchBarDelegate {
                                     let decoder = JSONDecoder()
                                     let result = try decoder.decode(ResultStats.self, from: data)
                                     
-                                    /* setGameStats */
+                                    // setGameStats(result)
+                                    /* func setGameStats(_ result: ResultStats) -> [(Stats)] */
                                     // 引数 result:ResultStats型
                                     // 配列に格納
                                  
@@ -183,34 +186,53 @@ extension ViewController: UISearchBarDelegate {
                                     self.allStatsList.removeAll()
                         
                                     for stat in result.playerstats.stats {
-                                       // if  statsname = stat.name, let statsvalue = stat.value {　// Optional
                                         
-                                        /* setLocalizedName*/
+                                        // getLocalizedName(stat: Stat, lang: String)
+                                        /* func setLocalizedName(stat stat: Stats, lang language: String) -> */
+                                        
+                                        // lang = "JA"
                                         /* stat.name を switch文で日本語に*/
+                                        
+                                        
+                                        var localName = ""
+                                        var category = ""
+                                        
+                                        switch stat.name {
+                                        case "DBD_KillerSkulls":
+                                            localName = "キラーランク"
+                                            category = "Killer"
+                                            self.killerStatsList.append((name: localName, value: String(format: "%.0f", stat.value)))
+                                        case "DBD_CamperSkulls":
+                                            localName = "サバイバーランク"
+                                            category = "Survivor"
+                                            self.survStatsList.append((name: localName, value: String(format: "%.0f", stat.value)))
+                                        default:
+                                            print("none")
+                                            category = "All"
+                                            self.allStatsList.append((name: stat.name/*localName*/, value: String(format: "%.0f", stat.value)))
+                                        }
                                         
                                         /* setValue */
                                         /* stat.value を　小数点以下２位まで表示に */
                                         
                                         /* switch case name==all killer surv配列
                                             self.showAll survtable killerTable */
-                                        var gameStats = (stat.name, stat.value)
-                                        self.allStatsList.append(gameStats)
-                                        
-                                        gameStats = ("surv", 1.1)//debug
-                                        self.survStatsList.append(gameStats)
-                                        
-                                        gameStats = ("killer", 1.2)//debug
-                                        self.killerStatsList.append(gameStats)
-                                       // }
+//                                        // debug
+//
+//                                        gameStats = Stats(name: "surv", value: 1.1)//debug
+//                                        self.survStatsList.append(gameStats)
+//
+//                                        gameStats = Stats(name: "killer", value: 1.2)//debug
+//                                        self.killerStatsList.append(gameStats)
                                     }
-                        
+                                    // debug
                                     if let firstTable = self.tableList.first {
                                         print("tableList[0] = \(firstTable)")
                                     }
                                     
+                                    /* close - setGameStats */
                                     self.tableList = self.allStatsList
                                     self.tableView.reloadData()
-                                    /* close - setGameStats */
                     
                                     //debugPrint(result)
                                     print(result.playerstats.steamID)
@@ -413,8 +435,23 @@ extension ViewController: UITableViewDataSource {
 
 // MARK: UITableViewDelegate
 extension ViewController: UITableViewDelegate {
-    // タップされたら遷移
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        detailName = tableList[indexPath.row].name
+        detailValue = tableList[indexPath.row].value
+    
+        performSegue(withIdentifier: "showDetailStats", sender: tableView)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
+        if (segue.identifier == "showDetailStats") {
+            let viewController: DetailStatsViewController = (segue.destination as? DetailStatsViewController)!
+            
+            viewController.name = detailName
+            viewController.value = detailValue
+        }
     }
 }

@@ -28,7 +28,7 @@ struct ResultPlayer: Codable {
 
 struct Stats: Codable {
     let name: String
-    let value : Float
+    let value : Double
 }
 struct PlayerStats: Codable {
     let steamID: String
