@@ -96,8 +96,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="142" translatesAutoresizingMaskIntoConstraints="NO" id="gv3-qg-ueW">
-                                <rect key="frame" x="0.0" y="188" width="414" height="520"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="57" translatesAutoresizingMaskIntoConstraints="NO" id="pSE-8O-4yw">
+                                <rect key="frame" x="0.0" y="138" width="414" height="405"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aox-47-V7c">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="20.5"/>
@@ -106,14 +106,17 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eiV-oC-f2r">
-                                        <rect key="frame" x="0.0" y="162.5" width="414" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="77.5" width="414" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xRe-ak-juE">
-                                        <rect key="frame" x="0.0" y="325" width="414" height="195"/>
+                                    <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="xRe-ak-juE" customClass="BarChartView" customModule="Charts">
+                                        <rect key="frame" x="0.0" y="155" width="414" height="250"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="250" id="34e-xe-TcO"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                             </stackView>
@@ -121,13 +124,14 @@
                         <viewLayoutGuide key="safeArea" id="Mhn-oF-AR8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="gv3-qg-ueW" firstAttribute="centerY" secondItem="HC0-uM-rfG" secondAttribute="centerY" id="4KZ-i7-W69"/>
-                            <constraint firstItem="gv3-qg-ueW" firstAttribute="centerX" secondItem="HC0-uM-rfG" secondAttribute="centerX" id="H6p-MN-Hkp"/>
-                            <constraint firstItem="gv3-qg-ueW" firstAttribute="top" secondItem="Mhn-oF-AR8" secondAttribute="top" constant="100" id="K1A-2D-ce2"/>
+                            <constraint firstItem="pSE-8O-4yw" firstAttribute="leading" secondItem="Mhn-oF-AR8" secondAttribute="leading" id="b5r-VK-jC7"/>
+                            <constraint firstItem="pSE-8O-4yw" firstAttribute="top" secondItem="Mhn-oF-AR8" secondAttribute="top" constant="50" id="sxL-vh-NBJ"/>
+                            <constraint firstItem="pSE-8O-4yw" firstAttribute="trailing" secondItem="Mhn-oF-AR8" secondAttribute="trailing" id="uYT-aR-GvE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="AS6-oF-k5G"/>
                     <connections>
+                        <outlet property="barChart" destination="xRe-ak-juE" id="dJz-Ra-22d"/>
                         <outlet property="detailname" destination="Aox-47-V7c" id="bVB-8e-jAN"/>
                         <outlet property="detailvalue" destination="eiV-oC-f2r" id="SpK-o1-UFf"/>
                     </connections>

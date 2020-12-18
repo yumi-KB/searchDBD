@@ -23,6 +23,8 @@
 		4BE42D552587E38600C9EA6D /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 4BE42D542587E38600C9EA6D /* Nuke */; };
 		4BE42D612588999500C9EA6D /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 4BE42D602588999500C9EA6D /* MBProgressHUD */; };
 		4BE42D8B258B136700C9EA6D /* DetailStatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE42D8A258B136700C9EA6D /* DetailStatsViewController.swift */; };
+		4BE42DD7258B65ED00C9EA6D /* SwiftUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE42DD6258B65ED00C9EA6D /* SwiftUIViewController.swift */; };
+		4BE42DE0258B807A00C9EA6D /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 4BE42DDF258B807A00C9EA6D /* Charts */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		4BE42D492587BFB700C9EA6D /* PlayerStatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStatsTableViewCell.swift; sourceTree = "<group>"; };
 		4BE42D4E2587BFC700C9EA6D /* PlayerStatsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerStatsTableViewCell.xib; sourceTree = "<group>"; };
 		4BE42D8A258B136700C9EA6D /* DetailStatsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailStatsViewController.swift; sourceTree = "<group>"; };
+		4BE42DBB258B448000C9EA6D /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = Carthage/Build/iOS/Charts.framework; sourceTree = "<group>"; };
+		4BE42DD6258B65ED00C9EA6D /* SwiftUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,7 @@
 				4BE42D612588999500C9EA6D /* MBProgressHUD in Frameworks */,
 				4BE08F812581C764007A7033 /* Alamofire in Frameworks */,
 				4BE42D552587E38600C9EA6D /* Nuke in Frameworks */,
+				4BE42DE0258B807A00C9EA6D /* Charts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,10 +119,12 @@
 			isa = PBXGroup;
 			children = (
 				4BE42D8A258B136700C9EA6D /* DetailStatsViewController.swift */,
+				4BE42DD6258B65ED00C9EA6D /* SwiftUIViewController.swift */,
 				4BE08EFC257F4F0C007A7033 /* DBD */,
 				4BE08F13257F4F0D007A7033 /* DBDTests */,
 				4BE08F1E257F4F0D007A7033 /* DBDUITests */,
 				4BE08EFB257F4F0C007A7033 /* Products */,
+				4BE42DBA258B448000C9EA6D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -165,6 +172,14 @@
 			path = DBDUITests;
 			sourceTree = "<group>";
 		};
+		4BE42DBA258B448000C9EA6D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4BE42DBB258B448000C9EA6D /* Charts.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -186,6 +201,7 @@
 				4BE08F802581C764007A7033 /* Alamofire */,
 				4BE42D542587E38600C9EA6D /* Nuke */,
 				4BE42D602588999500C9EA6D /* MBProgressHUD */,
+				4BE42DDF258B807A00C9EA6D /* Charts */,
 			);
 			productName = DBD;
 			productReference = 4BE08EFA257F4F0C007A7033 /* DBD.app */;
@@ -262,6 +278,7 @@
 				4BE08F7F2581C764007A7033 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				4BE42D532587E38600C9EA6D /* XCRemoteSwiftPackageReference "Nuke" */,
 				4BE42D5F2588999500C9EA6D /* XCRemoteSwiftPackageReference "MBProgressHUD" */,
+				4BE42DDE258B807A00C9EA6D /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = 4BE08EFB257F4F0C007A7033 /* Products */;
 			projectDirPath = "";
@@ -319,7 +336,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\n\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -328,6 +345,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BE42DD7258B65ED00C9EA6D /* SwiftUIViewController.swift in Sources */,
 				4BE42D4A2587BFB700C9EA6D /* PlayerStatsTableViewCell.swift in Sources */,
 				4BE08F02257F4F0C007A7033 /* ViewController.swift in Sources */,
 				4BE08EFE257F4F0C007A7033 /* AppDelegate.swift in Sources */,
@@ -525,6 +543,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_WORKSPACE = YES;
 			};
 			name = Debug;
 		};
@@ -548,6 +567,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_WORKSPACE = YES;
 			};
 			name = Release;
 		};
@@ -697,6 +717,14 @@
 				minimumVersion = 1.2.0;
 			};
 		};
+		4BE42DDE258B807A00C9EA6D /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts";
+			requirement = {
+				branch = "xcode-12";
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -714,6 +742,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4BE42D5F2588999500C9EA6D /* XCRemoteSwiftPackageReference "MBProgressHUD" */;
 			productName = MBProgressHUD;
+		};
+		4BE42DDF258B807A00C9EA6D /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4BE42DDE258B807A00C9EA6D /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = Charts;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
