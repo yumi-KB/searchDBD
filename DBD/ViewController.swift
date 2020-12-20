@@ -2,7 +2,6 @@ import UIKit
 import Alamofire
 import Nuke
 import MBProgressHUD
-import SwiftUI
 
 class ViewController: UIViewController {
     
@@ -69,6 +68,7 @@ class ViewController: UIViewController {
     //var statsValueTableList: [Double] = []
     var detailName = ""
     var detailValue = ""
+    
     
     /* indicator */
     var hud = MBProgressHUD()
@@ -142,6 +142,8 @@ extension ViewController: UISearchBarDelegate {
                     guard let data = response.data else {
                         self.showErrorAlert()
                         print("ERROR: Error with response")
+                        
+                        MBProgressHUD.hide(for: self.view, animated: true)
                         return
                     }
                     do {
@@ -171,6 +173,8 @@ extension ViewController: UISearchBarDelegate {
                                 guard let data = response.data else {
                                     self.showErrorAlert()
                                     print("ERROR: Error with response")
+                                    
+                                    MBProgressHUD.hide(for: self.view, animated: true)
                                     return
                                 }
                                 do {
@@ -255,6 +259,8 @@ extension ViewController: UISearchBarDelegate {
                                             guard let data = response.data else {
                                                 self.showErrorAlert()
                                                 print("ERROR: Error with response")
+                                                
+                                                MBProgressHUD.hide(for: self.view, animated: true)
                                                 return
                                             }
                                             
@@ -278,11 +284,15 @@ extension ViewController: UISearchBarDelegate {
                                             }catch {
                                                 self.showErrorAlert()
                                                 print("ERROR: Error with response")
+                                                
+                                                MBProgressHUD.hide(for: self.view, animated: true)
                                                 return
                                             }
                                         case .failure(let error):
                                             self.showErrorAlert()
                                             print("ERROR: \(error)")
+                                            
+                                            MBProgressHUD.hide(for: self.view, animated: true)
                                             return
                                         }
                                     }
@@ -290,11 +300,15 @@ extension ViewController: UISearchBarDelegate {
                                 } catch {
                                     self.showErrorAlert()
                                     print("ERROR: Error with response")
+                                    
+                                    MBProgressHUD.hide(for: self.view, animated: true)
                                     return
                                 }
                             case .failure(let error):
                                 self.showErrorAlert()
                                 print("ERROR: \(error)")
+                                
+                                MBProgressHUD.hide(for: self.view, animated: true)
                                 return
                             }
                         }
@@ -325,6 +339,8 @@ extension ViewController: UISearchBarDelegate {
                                 guard let data = response.data else {
                                     self.showErrorAlert()
                                     print("ERROR: Error with response")
+                                    
+                                    MBProgressHUD.hide(for: self.view, animated: true)
                                     return
                                 }
                                 do {
@@ -350,6 +366,8 @@ extension ViewController: UISearchBarDelegate {
                                         case .success:
                                             guard let data = response.data else {
                                                 print("ERROR: Error with response")
+                                                
+                                                MBProgressHUD.hide(for: self.view, animated: true)
                                                 return
                                             }
                                             
@@ -371,11 +389,15 @@ extension ViewController: UISearchBarDelegate {
                                             }catch {
                                                 self.showErrorAlert()
                                                 print("ERROR: Error with response")
+                                                
+                                                MBProgressHUD.hide(for: self.view, animated: true)
                                                 return
                                             }
                                         case .failure(let error):
                                             self.showErrorAlert()
                                             print("ERROR: \(error)")
+                                            
+                                            MBProgressHUD.hide(for: self.view, animated: true)
                                             return
                                         }
                                     }
@@ -383,11 +405,14 @@ extension ViewController: UISearchBarDelegate {
                                 } catch {
                                     self.showErrorAlert()
                                     print("ERROR: Error with response")
+                                    
+                                    MBProgressHUD.hide(for: self.view, animated: true)
                                     return
                                 }
                             case .failure(let error):
                                 self.showErrorAlert()
                                 print("ERROR: \(error)")
+                                MBProgressHUD.hide(for: self.view, animated: true)
                                 return
                             }
                         }
@@ -397,6 +422,9 @@ extension ViewController: UISearchBarDelegate {
                 case .failure(let error):
                     self.showErrorAlert()
                     print("ERROR: \(error)")
+                    
+                    
+                    MBProgressHUD.hide(for: self.view, animated: true)
                     return
                 }
                 
@@ -451,8 +479,11 @@ extension ViewController: UITableViewDelegate {
         if (segue.identifier == "showDetailStats") {
             let viewController: DetailStatsViewController = (segue.destination as? DetailStatsViewController)!
             
-            viewController.name = detailName
-            viewController.value = detailValue
+            viewController.statName = detailName
+            viewController.statValue = detailValue
+            
+            viewController.steamID = steamID
+            viewController.statKey = "DBD_CamperSkulls"
         }
     }
 }
