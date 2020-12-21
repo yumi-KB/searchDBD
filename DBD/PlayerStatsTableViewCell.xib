@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -8,35 +8,32 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PlayerStatsCell" id="YtF-Zv-IzA" customClass="PlayerStatsTableViewCell" customModule="DBD" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PlayerStatsCell" rowHeight="50" id="YtF-Zv-IzA" customClass="PlayerStatsTableViewCell" customModule="DBD" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YtF-Zv-IzA" id="MtT-3n-HUf">
-                <rect key="frame" x="0.0" y="0.0" width="383" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="383" height="50"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" spacing="166" translatesAutoresizingMaskIntoConstraints="NO" id="uW4-A6-Q8X">
-                        <rect key="frame" x="15" y="5" width="353" height="34"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="uW4-A6-Q8X">
+                        <rect key="frame" x="15" y="5" width="357" height="40"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Key" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mfd-sb-1CF">
-                                <rect key="frame" x="0.0" y="0.0" width="32.5" height="34"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Key" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mfd-sb-1CF">
+                                <rect key="frame" x="0.0" y="0.0" width="241" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOE-N8-eFT">
-                                <rect key="frame" x="223" y="0.0" width="130" height="34"/>
+                                <rect key="frame" x="242" y="0.0" width="115" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="130" id="NWT-C3-wDT"/>
+                                    <constraint firstAttribute="width" constant="115" id="bCr-ka-eaY"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <constraints>
-                            <constraint firstItem="JOE-N8-eFT" firstAttribute="leading" secondItem="Mfd-sb-1CF" secondAttribute="trailing" constant="15" id="07v-Wi-eD7"/>
-                        </constraints>
                     </stackView>
                 </subviews>
                 <constraints>
@@ -50,7 +47,7 @@
                 <outlet property="playerStatsKeyLabel" destination="Mfd-sb-1CF" id="P6m-hq-sQ0"/>
                 <outlet property="playerStatsValueLabel" destination="JOE-N8-eFT" id="lxz-hN-S8Y"/>
             </connections>
-            <point key="canvasLocation" x="-196" y="-255"/>
+            <point key="canvasLocation" x="-197.10144927536234" y="-257.14285714285711"/>
         </tableViewCell>
     </objects>
 </document>

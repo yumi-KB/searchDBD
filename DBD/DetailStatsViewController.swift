@@ -6,14 +6,15 @@ class DetailStatsViewController: UIViewController {
     
     // MARK: Properties
     
+    // MainViewControllerから受け取る値4つ
     var statName = ""
     var statValue = ""
-    
     var steamID = ""
     var statKey = ""
     
     /* debug */
     //let StatsData: [Double] = [120, 150, 0,0,0,0, 140]
+    
     var weeklyStatsData: [Double] = Array(repeating: 0, count: 7)
     
     @IBOutlet weak var detailName: UILabel!
@@ -39,8 +40,8 @@ class DetailStatsViewController: UIViewController {
     
     private func getWeeklyStats(steamID: String, statNameKey: String, completion: @escaping() -> ()) {
         // debug
-        let steamID = "76561198863602426"
-        let statNameKey = "DBD_BloodwebPoints"
+        // let steamID = "76561198863602426"
+        // let statNameKey = "DBD_BloodwebPoints"
         
         /* setDateFormat */
         let date = Date()
@@ -59,10 +60,8 @@ class DetailStatsViewController: UIViewController {
             let formatedDate = format.string(from: addingDate!)
             print("i: \(i) date:\(formatedDate)")
             
-            /* firestoreの読み込み */
-            /* weeklyStatsData配列に格納 */
+            /* firestoreからデータの読み込み weeklyStatsData配列に格納 */
             setStatFromFirestore(steamID: steamID, date: formatedDate, statKey: statNameKey, index: i + (howManyDays-1), completion: {
-                
                 count = count + 1
                 print("count(\(count))Firestore Done.\n")
                 if count == 7 {
